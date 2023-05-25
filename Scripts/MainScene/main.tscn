@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccqipmfw0g54b"]
+[gd_scene load_steps=3 format=3 uid="uid://ccqipmfw0g54b"]
 
 [ext_resource type="Script" path="res://Scripts/MainScene/mainCode.cs" id="1_eqfsm"]
+[ext_resource type="PackedScene" uid="uid://cx31wnxe4e4jr" path="res://Scripts/Objects/sun.tscn" id="2_pbyu2"]
 
 [node name="Main" type="Node2D"]
+position = Vector2(574, 318)
 script = ExtResource("1_eqfsm")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="Sun" parent="." instance=ExtResource("2_pbyu2")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

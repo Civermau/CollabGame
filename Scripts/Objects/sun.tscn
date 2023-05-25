@@ -1,19 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx31wnxe4e4jr"]
+[gd_scene load_steps=5 format=3 uid="uid://cx31wnxe4e4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/sun.cs" id="1_cfw31"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qwaln"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r6whb"]
 width = 50
 height = 50
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5xfv"]
 radius = 25.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s67a5"]
+radius = 321.223
+
 [node name="Sun" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_cfw31")
+metadata/_edit_horizontal_guides_ = [-38.0]
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = SubResource("NoiseTexture2D_qwaln")
+texture = SubResource("NoiseTexture2D_r6whb")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e5xfv")
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="PlanetDetector" type="Area2D" parent="."]
+
+[node name="PlanetCollider" type="CollisionShape2D" parent="PlanetDetector"]
+shape = SubResource("CircleShape2D_s67a5")
