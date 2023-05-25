@@ -37,6 +37,7 @@ public partial class sun : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 		updateSize();
+
 	}
 	private void updateSize()
 	{
