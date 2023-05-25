@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx31wnxe4e4jr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qwaln"]
+width = 50
+height = 50
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5xfv"]
+radius = 25.0
+
+[node name="Sun" type="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("NoiseTexture2D_qwaln")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e5xfv")
