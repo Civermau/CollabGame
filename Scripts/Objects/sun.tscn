@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx31wnxe4e4jr"]
+[gd_scene load_steps=4 format=3 uid="uid://cx31wnxe4e4jr"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/sun.cs" id="1_cfw31"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qwaln"]
 width = 50
@@ -8,6 +10,7 @@ height = 50
 radius = 25.0
 
 [node name="Sun" type="CharacterBody2D"]
+script = ExtResource("1_cfw31")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("NoiseTexture2D_qwaln")

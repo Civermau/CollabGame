@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxf7hsx6bn1hy"]
+[gd_scene load_steps=4 format=3 uid="uid://cxf7hsx6bn1hy"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/planet.cs" id="1_y14s7"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qwaln"]
 width = 50
@@ -8,6 +10,7 @@ height = 50
 radius = 25.0
 
 [node name="Planet" type="CharacterBody2D"]
+script = ExtResource("1_y14s7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("NoiseTexture2D_qwaln")
