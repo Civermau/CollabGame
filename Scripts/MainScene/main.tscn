@@ -1,16 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccqipmfw0g54b"]
+[gd_scene load_steps=9 format=3 uid="uid://ccqipmfw0g54b"]
 
 [ext_resource type="Script" path="res://Scripts/MainScene/mainCode.cs" id="1_eqfsm"]
 [ext_resource type="PackedScene" uid="uid://cx31wnxe4e4jr" path="res://Scripts/Objects/sun.tscn" id="2_pbyu2"]
 
+[sub_resource type="Gradient" id="Gradient_6lqns"]
+colors = PackedColorArray(0, 0, 0.133333, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8anw0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7j6mg"]
+width = 1000
+height = 1000
+color_ramp = SubResource("Gradient_6lqns")
+noise = SubResource("FastNoiseLite_8anw0")
+
+[sub_resource type="Gradient" id="Gradient_qrqa0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.814935, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.12536, 0.12536, 0.12536, 0.12536, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buu1n"]
+frequency = 0.0774
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sm464"]
+width = 1000
+height = 1000
+invert = true
+color_ramp = SubResource("Gradient_qrqa0")
+noise = SubResource("FastNoiseLite_buu1n")
+
 [node name="Main" type="Node2D"]
 position = Vector2(574, 318)
 script = ExtResource("1_eqfsm")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(578, 321)
+scale = Vector2(2.74219, 2.36328)
+texture = SubResource("NoiseTexture2D_7j6mg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(551, 367.5)
+scale = Vector2(2.66406, 2.33789)
+texture = SubResource("NoiseTexture2D_sm464")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="Sun" parent="." instance=ExtResource("2_pbyu2")]
+position = Vector2(14, -14)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

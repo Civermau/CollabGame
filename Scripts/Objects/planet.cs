@@ -26,4 +26,10 @@ public partial class planet : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+	public void destroyPlanet()
+	{
+		this.QueueFree();
+	}
+	
 }

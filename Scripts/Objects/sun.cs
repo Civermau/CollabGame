@@ -43,4 +43,15 @@ public partial class sun : CharacterBody2D
 	{
 		this.Scale = sizeBase * sizeMultiplier;
 	}
+
+	public void _on_planet_detector_body_entered(Node2D body)
+	{
+		if(body.GetType() == typeof(planet))
+		{
+			planet planet = (planet)body;
+			planet.destroyPlanet();
+
+			GD.Print(planet.Name + " ha entrado al area de deteccion");
+		}
+	}
 }
