@@ -10,6 +10,7 @@ height = 50
 radius = 25.0
 
 [node name="Planet" type="CharacterBody2D"]
+position = Vector2(665, 326)
 script = ExtResource("1_y14s7")
 
 [node name="Sprite" type="Sprite2D" parent="."]
