@@ -30,6 +30,7 @@ texture = SubResource("NoiseTexture2D_r6whb")
 shape = SubResource("CircleShape2D_e5xfv")
 
 [node name="Camera" type="Camera2D" parent="."]
+enabled = false
 
 [node name="PlanetDetector" type="Area2D" parent="."]
 
