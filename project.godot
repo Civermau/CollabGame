@@ -49,4 +49,4 @@ moveSunDown={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
