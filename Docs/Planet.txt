@@ -1,0 +1,27 @@
+Importaciones:
+	El código comienza con dos declaraciones de importación: using Godot; y using System;. Esto permite acceder a las clases y funciones proporcionadas por las bibliotecas Godot y System respectivamente.
+
+Declaración de clase:
+	La línea public partial class planet : CharacterBody2D declara una clase llamada "planet" que es una extensión parcial de la clase "CharacterBody2D" en Godot. Esto significa que la clase "planet" hereda todas las propiedades y métodos de la clase "CharacterBody2D" y puede agregar su propia funcionalidad adicional.
+
+Constante de velocidad:
+	public const float Speed = 100.0f; define una constante llamada "Speed" con un valor de 100.0f. Esta constante representa la velocidad a la que se moverá el planeta.
+
+Variables exportadas:
+	[Export] public bool onSun = false; declara una variable booleana llamada "onSun" que puede ser exportada desde el editor de Godot. Por defecto, se establece en falso.
+	[Export] Vector2 direction = new Vector2((float)GD.Randfn(0, 1), (float)GD.Randfn(0, 1)); declara una variable Vector2 llamada "direction" que también puede ser exportada. Se inicializa con un nuevo Vector2 aleatorio utilizando la función GD.Randfn() de Godot, que genera un número aleatorio entre 0 y 1 para las coordenadas X e Y del vector.
+
+Método _Ready():
+	El método _Ready() se llama automáticamente cuando el nodo (instancia de la clase) está listo para usarse. En este método, se verifica si el nodo padre es una instancia de la clase "PathFollow2D". Si es así, significa que el planeta está en el sol, por lo que se establece la variable onSun en verdadero, se establece la posición del planeta en (0, 0) y se imprime un mensaje en la consola.
+
+Método _PhysicsProcess():
+	El método _PhysicsProcess(double delta) se llama automáticamente en cada cuadro durante el procesamiento de la física. En este método, se realiza el movimiento del planeta a menos que onSun sea verdadero.
+	Si onSun es falso, se calcula una nueva velocidad para el planeta. Si direction no es igual a Vector2.Zero (es decir, no es el vector cero), se establece la velocidad del planeta como direction * Speed (es decir, se mueve en la dirección especificada por direction con la velocidad dada por Speed).
+	Si direction es Vector2.Zero, se usa la función Mathf.MoveToward() de Godot para disminuir gradualmente la velocidad del planeta en la dirección X hasta llegar a cero.
+	Finalmente, se establece la velocidad del planeta y se llama al método MoveAndSlide() para realizar el deslizamiento y la detección de colisiones mientras se mueve.
+
+Método DestroyPlanet():
+	Este método DestroyPlanet() simplemente llama a la función QueueFree() en sí mismo, lo que marca el nodo para su eliminación en el siguiente procesamiento del árbol de escenas.
+
+Método AddPlanet():
+	El método AddPlanet(Node node) toma un parámetro node que representa un nodo en la escena. Primero, elimina el planeta de su nodo padre actual llamando a GetParent().RemoveChild(this). Luego, llama a node.CallDeferred("add_child", this) para agregar el planeta como un hijo del nodo proporcionado.

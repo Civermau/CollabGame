@@ -1,0 +1,29 @@
+Importaciones:
+	El código comienza con dos declaraciones de importación: using Godot; y using System;. Esto permite acceder a las clases y funciones proporcionadas por las bibliotecas Godot y System respectivamente.
+
+Declaración de clase:
+	La línea public partial class ChunkNode : Node declara una clase llamada "ChunkNode" que es una extensión parcial de la clase "Node" en Godot. Esto significa que la clase "ChunkNode" hereda todas las propiedades y métodos de la clase "Node" y puede agregar su propia funcionalidad adicional.
+
+Variables de instancia:
+	Public int x, y; declara dos variables enteras llamadas "x" e "y". Estas variables se exportan, lo que significa que se pueden modificar desde el editor de Godot.
+
+Método _Ready():
+	El método _Ready() se llama automáticamente cuando el nodo (instancia de la clase) está listo para usarse. En este método, se realiza lo siguiente:
+	Se establece la posición del nodo "Area2D" dentro del ChunkNode utilizando los valores de "x" e "y" multiplicados por 1536.
+	Nota: Los comentarios que están en las líneas que comienzan con // indican que esas líneas están comentadas, es decir, no se ejecutarán. Es posible que haya código comentado que se haya omitido en esta explicación.
+
+Método _Process():
+	El método _Process(double delta) se llama automáticamente en cada cuadro, y recibe el tiempo transcurrido desde el cuadro anterior en el parámetro delta. En este caso, el método está vacío y no realiza ninguna acción.
+
+Método _on_area_2d_body_entered():
+	Este método se conecta a un evento cuando un cuerpo entra en el área 2D.
+	Si el cuerpo es un nodo de tipo "sun", se realiza un casting explícito para convertir el cuerpo en un objeto de tipo "sun".
+	A continuación, se realiza un bucle anidado que itera sobre una matriz de 5x5 alrededor del ChunkNode actual. Para cada posición en la matriz:
+	Si no hay un nodo ChunkNode en esa posición (obtenido utilizando GetParent().GetNodeOrNull<ChunkNode>("ChunkNode" + (x + i).ToString() + "," + (y + j).ToString()) == null) y no se encuentra en los bordes exteriores de la matriz (!(i == -2 || i == 2 || j == -2 || j == 2)), se crea un nuevo nodo ChunkNode utilizando un PackedScene y se agrega como hijo del nodo padre.
+	Si se encuentra en los bordes exteriores de la matriz (i == -2 || i == 2 || j == -2 || j == 2), se verifica si hay un nodo ChunkNode en esa posición. Si hay un nodo ChunkNode en esa posición, se libera de la memoria (QueueFree()) para eliminarlo.
+	En resumen, este método se encarga de crear nuevos nodos ChunkNode en un patrón de 5x5 alrededor del nodo actual y eliminar los nodos ChunkNode en los bordes exteriores.
+
+Método _on_area_2d_body_exited():
+	Este método se conecta a un evento cuando un cuerpo sale del área 2D.
+	Si el cuerpo es un nodo de tipo "sun", se realiza un casting explícito para convertir el cuerpo en un objeto de tipo "sun".
+	En este caso, el método simplemente imprime "shit" en la consola.

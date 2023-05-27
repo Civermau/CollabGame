@@ -1,0 +1,34 @@
+Importaciones:
+	El código comienza con dos declaraciones de importación: using Godot; y using System;. Esto permite acceder a las clases y funciones proporcionadas por las bibliotecas Godot y System respectivamente.
+
+Declaración de clase:
+	La línea public partial class PathFollow1 : PathFollow2D declara una clase llamada "PathFollow1" que es una extensión parcial de la clase "PathFollow2D" en Godot. Esto significa que la clase "PathFollow1" hereda todas las propiedades y métodos de la clase "PathFollow2D" y puede agregar su propia funcionalidad adicional.
+
+Variable exportada:
+	[Export] public const double velocity = .05; declara una variable constante de tipo double llamada "velocity" que puede ser exportada desde el editor de Godot. Por defecto, se establece en 0.05.
+
+Variables de instancia:
+	private int PlanetQuantity = 0; declara una variable entera llamada "PlanetQuantity" que se utiliza para realizar un seguimiento de la cantidad de planetas creados.
+
+Variables de instancia y método _Ready():
+	Vector2 initPosition; declara una variable de tipo Vector2 llamada "initPosition".
+	El método _Ready() se llama automáticamente cuando el nodo (instancia de la clase) está listo para usarse. En este método, se guarda la posición inicial del nodo en la variable initPosition.
+
+Método _Process():
+	El método _Process(double delta) se llama automáticamente en cada cuadro, y recibe el tiempo transcurrido desde el cuadro anterior en el parámetro delta. En este caso, el método incrementa el valor de ProgressRatio en función de velocity multiplicado por delta.
+
+Método _on_planet_detector_body_entered():
+	Este método se conecta a un evento cuando un cuerpo entra en el detector de planetas.
+	Si el cuerpo es un nodo de tipo "planet", se realiza un casting explícito para convertir el cuerpo en un objeto de tipo "planet".
+	Si el planeta no está en el sol (!Planet.onSun), se llama al método CreatePlanet() pasando el planeta como argumento.
+	También se imprime un mensaje en la consola indicando que el planeta ha entrado en el área de detección.
+
+Método CreatePlanet():
+	Este método crea un nuevo planeta y realiza ajustes en su posición y propiedades.
+	Se incrementa el contador PlanetQuantity y se establece la propiedad onSun del planeta en true.
+	Se asigna un nuevo nombre al planeta basado en PlanetQuantity.
+	Se calcula la posición inicial del planeta utilizando funciones trigonométricas (Math.Cos() y Math.Sin()) y se establece la posición del planeta en consecuencia.
+	A continuación, se recorre un bucle para recalcular la posición de los planetas anteriores en función de la cantidad actual de planetas.
+	Se obtiene una referencia al nodo del planeta anterior utilizando GetNode<Node2D>("Planet" + i.ToString()).
+	Se calcula la nueva posición del nodo anterior utilizando funciones trigonométricas y se establece la posición del nodo en consecuencia.
+	Finalmente, se llama al método AddPlanet(this) del planeta para agregarlo como hijo del nodo "PathFollow1".

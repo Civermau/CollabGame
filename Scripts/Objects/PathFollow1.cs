@@ -7,13 +7,11 @@ public partial class PathFollow1 : PathFollow2D
 	public const double velocity = .05;
 	private int PlanetQuantity = 0;
 	Vector2 initPosition;
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		initPosition = Position;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		ProgressRatio += (float)(velocity * delta);

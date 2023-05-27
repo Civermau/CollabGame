@@ -1,0 +1,26 @@
+Importaciones:
+	El código comienza con dos declaraciones de importación: using Godot; y using System;. Esto permite acceder a las clases y funciones proporcionadas por las bibliotecas Godot y System respectivamente.
+
+Declaración de clase:
+	La línea public partial class sun : CharacterBody2D declara una clase llamada "sun" que es una extensión parcial de la clase "CharacterBody2D" en Godot. Esto significa que la clase "sun" hereda todas las propiedades y métodos de la clase "CharacterBody2D" y puede agregar su propia funcionalidad adicional.
+
+Variables exportadas:
+	[Export] public float Speed = 300.0f; declara una variable de punto flotante llamada "Speed" que puede ser exportada desde el editor de Godot. Por defecto, se establece en 300.0f.
+	[Export] private Vector2 sizeMultiplier = new Vector2(1, 1); declara una variable privada llamada "sizeMultiplier" de tipo Vector2 que también puede ser exportada. Se inicializa con un nuevo Vector2 con valores (1, 1).
+	[Export] private Vector2 sizeBase = new Vector2(1, 1); declara una variable privada llamada "sizeBase" de tipo Vector2 que también puede ser exportada. Se inicializa con un nuevo Vector2 con valores (1, 1).
+	[Export] private int maxPlanetCount = 0; declara una variable privada de tipo entero llamada "maxPlanetCount" que puede ser exportada. Se inicializa con un valor de 0.
+
+Método _Ready():
+	El método _Ready() se llama automáticamente cuando el nodo (instancia de la clase) está listo para usarse. En este método, se imprime un mensaje en la consola que indica que el objeto "sun" se ha cargado exitosamente. El mensaje también incluye el nombre del objeto "sun" obtenido a través de la propiedad Name.
+
+Método _PhysicsProcess():
+	El método _PhysicsProcess(double delta) se llama automáticamente en cada cuadro durante el procesamiento de la física. En este método, se realiza el movimiento del sol y se actualiza su tamaño.
+	Se obtiene la velocidad actual del sol en el vector velocity.
+	Luego, se obtiene la dirección del movimiento del sol utilizando la función Input.GetVector() de Godot. Esta función recibe los nombres de las entradas de movimiento ("moveSunLeft", "moveSunRight", "moveSunUp", "moveSunDown") y devuelve un vector que representa la dirección del movimiento.
+	Si la dirección obtenida no es igual a Vector2.Zero (es decir, no es el vector cero), se actualiza la velocidad del sol en las componentes X e Y según la dirección y la velocidad establecida.
+	Si la dirección es Vector2.Zero, se utiliza la función Mathf.Lerp() de Godot para reducir gradualmente la velocidad del sol en las componentes X e Y hasta llegar a cero.
+	Luego, se actualiza la velocidad del sol y se llama al método MoveAndSlide() para realizar el deslizamiento y la detección de colisiones mientras se mueve.
+	Finalmente, se llama al método updateSize() para actualizar el tamaño del sol.
+
+Método updateSize():
+	El método updateSize() actualiza el tamaño del sol multiplicando el vector sizeBase por el vector sizeMultiplier. El resultado se asigna a la propiedad Scale del sol, lo que cambia su escala visual en la escena.

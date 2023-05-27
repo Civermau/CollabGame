@@ -1,0 +1,19 @@
+Importaciones:
+	El código comienza con dos declaraciones de importación: using Godot; y using System;. Esto permite acceder a las clases y funciones proporcionadas por las bibliotecas Godot y System respectivamente.
+
+Declaración de clase:
+	La línea public partial class planet_ui : Control declara una clase llamada "planet_ui" que es una extensión parcial de la clase "Control" en Godot. Esto significa que la clase "planet_ui" hereda todas las propiedades y métodos de la clase "Control" y puede agregar su propia funcionalidad adicional.
+
+Variable exportada:
+	[Export(PropertyHint.Flags)] private bool isMenuShown = false; declara una variable booleana llamada "isMenuShown" que puede ser exportada desde el editor de Godot. La propiedad [PropertyHint.Flags] indica que esta variable es de tipo "flags", lo que permite seleccionar múltiples opciones en el editor.
+
+Método _Ready():
+	El método _Ready() se llama automáticamente cuando el nodo (instancia de la clase) está listo para usarse. En este método, se imprime un mensaje en la consola que indica que la interfaz de usuario ("UI") se ha cargado correctamente.
+
+Método _Process():
+	El método _Process(double delta) se llama automáticamente en cada cuadro, y recibe el tiempo transcurrido desde el cuadro anterior en el parámetro delta. En este caso, el método está vacío y no contiene ninguna funcionalidad adicional.
+
+Método _on_upgrades_pressed():
+	Este método se conecta a un evento presionado en un elemento de interfaz de usuario llamado "upgrades". Es un método de respuesta de Godot que se activa cuando se presiona el elemento.
+	Si isMenuShown es false, se obtiene una referencia a un nodo llamado "Animations" que contiene un AnimationPlayer y se reproduce la animación llamada "ShowHide-UpgMenu".
+	Si isMenuShown es true, se reproduce en reversa (hacia atrás) la animación "ShowHide-UpgMenu" utilizando el AnimationPlayer.
