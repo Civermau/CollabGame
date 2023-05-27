@@ -8,6 +8,7 @@ public partial class planet_ui : Control
 	public override void _Ready()
 	{
 		GD.Print("UI succesfully loaded");
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,7 +18,7 @@ public partial class planet_ui : Control
 
 	private void _on_upgrades_pressed()
 	{
-		if (!isMenuShown)
+		if (!isMenuShown)	
 		{
 			GetNode<AnimationPlayer>("Animations").Play("ShowHide-UpgMenu");
 		} else
