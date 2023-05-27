@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccqipmfw0g54b"]
+[gd_scene load_steps=10 format=3 uid="uid://ccqipmfw0g54b"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/mainCode.cs" id="1_0hfpt"]
+[ext_resource type="PackedScene" uid="uid://cxf7hsx6bn1hy" path="res://Scripts/Objects/planet.tscn" id="2_6ll6m"]
 [ext_resource type="PackedScene" uid="uid://cx31wnxe4e4jr" path="res://Scripts/Objects/sun.tscn" id="2_pbyu2"]
+[ext_resource type="PackedScene" uid="uid://ccg0j6lu2wuu" path="res://Scripts/Objects/ChunkNode.tscn" id="3_uld8w"]
 
 [sub_resource type="Gradient" id="Gradient_6lqns"]
 colors = PackedColorArray(0, 0, 0.133333, 1, 0, 0, 0, 1)
@@ -31,7 +32,6 @@ noise = SubResource("FastNoiseLite_buu1n")
 
 [node name="Main" type="Node2D"]
 position = Vector2(574, 318)
-script = ExtResource("1_0hfpt")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -47,11 +47,17 @@ position = Vector2(551, 367.5)
 scale = Vector2(2.66406, 2.33789)
 texture = SubResource("NoiseTexture2D_sm464")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
 [node name="Sun" parent="." instance=ExtResource("2_pbyu2")]
 position = Vector2(14, -14)
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Planet" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet2" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-283, 172)
+
+[node name="Planet3" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-494, -148)
+
+[node name="ChunkNode" parent="." instance=ExtResource("3_uld8w")]
+position = Vector2(-574, -327)
