@@ -140306,7 +140306,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5xfv"]
-radius = 50.0
+radius = 32.0
 
 [node name="Planet" type="CharacterBody2D"]
 script = ExtResource("1_y14s7")
@@ -140315,9 +140315,8 @@ script = ExtResource("1_y14s7")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7b8gm")
 animation = &"Planet12"
-frame_progress = 0.00822531
+frame_progress = 0.0092546
 speed_scale = 4.0
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_e5xfv")
