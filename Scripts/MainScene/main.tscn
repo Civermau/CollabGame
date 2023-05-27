@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccqipmfw0g54b"]
 
-[ext_resource type="Script" path="res://Scripts/MainScene/mainCode.cs" id="1_eqfsm"]
+[ext_resource type="Script" path="res://Scripts/Objects/mainCode.cs" id="1_0hfpt"]
 [ext_resource type="PackedScene" uid="uid://cx31wnxe4e4jr" path="res://Scripts/Objects/sun.tscn" id="2_pbyu2"]
 
 [sub_resource type="Gradient" id="Gradient_6lqns"]
@@ -31,7 +31,7 @@ noise = SubResource("FastNoiseLite_buu1n")
 
 [node name="Main" type="Node2D"]
 position = Vector2(574, 318)
-script = ExtResource("1_eqfsm")
+script = ExtResource("1_0hfpt")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
