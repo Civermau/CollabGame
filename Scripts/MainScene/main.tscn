@@ -40,7 +40,9 @@ position = Vector2(578, 321)
 scale = Vector2(2.74219, 2.36328)
 texture = SubResource("NoiseTexture2D_7j6mg")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(551, 367.5)
 scale = Vector2(2.66406, 2.33789)
 texture = SubResource("NoiseTexture2D_sm464")
