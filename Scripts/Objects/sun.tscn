@@ -1,23 +1,25 @@
 [gd_scene load_steps=7 format=3 uid="uid://cx31wnxe4e4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/sun.cs" id="1_cfw31"]
-[ext_resource type="PackedScene" uid="uid://cxf7hsx6bn1hy" path="res://Scripts/Objects/planet.tscn" id="2_jxjmn"]
+[ext_resource type="Script" path="res://Scripts/Objects/PathFollow1.cs" id="2_u6tia"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r6whb"]
-width = 50
-height = 50
+width = 150
+height = 150
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5xfv"]
-radius = 25.0
+radius = 75.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s67a5"]
 radius = 320.1
 
 [sub_resource type="Curve2D" id="Curve2D_6iac4"]
+resource_local_to_scene = true
+bake_interval = 0.5
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -320, -8, 0, 0, 0, 0, -312, 80, 0, 0, 0, 0, -280, 160, 0, 0, 0, 0, -232, 224, 0, 0, 0, 0, -160, 280, 0, 0, 0, 0, -80, 312, 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 80, 312, 0, 0, 0, 0, 160, 280, 0, 0, 0, 0, 224, 224, 0, 0, 0, 0, 272, 160, 0, 0, 0, 0, 312, 80, 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 312, -80, 0, 0, 0, 0, 272, -168, 0, 0, 0, 0, 224, -224, 0, 0, 0, 0, 160, -280, 0, 0, 0, 0, 80, -312, 0, 0, 0, 0, 0, -320, 0, 0, 0, 0, -80, -312, 0, 0, 0, 0, -160, -280, 0, 0, 0, 0, -224, -232, 0, 0, 0, 0, -272, -168, 0, 0, 0, 0, -304, -88, 0, 0, 0, 0, -320, -8)
+"points": PackedVector2Array(1.52906, -178.504, -1.52906, 178.504, -320, -8, -172.534, -1.41421, 172.534, 1.41421, 0, 320, 0, 179.605, 0, -179.605, 320, 0, 175.362, 1.41421, -175.362, -1.41421, 0, -320, 5.99323, -169.309, -5.99323, 169.309, -320, -8)
 }
-point_count = 25
+point_count = 5
 
 [node name="Sun" type="CharacterBody2D"]
 script = ExtResource("1_cfw31")
@@ -30,19 +32,19 @@ texture = SubResource("NoiseTexture2D_r6whb")
 shape = SubResource("CircleShape2D_e5xfv")
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
 [node name="PlanetDetector" type="Area2D" parent="."]
 
 [node name="PlanetCollider" type="CollisionShape2D" parent="PlanetDetector"]
 shape = SubResource("CircleShape2D_s67a5")
 
-[node name="Planet" parent="." instance=ExtResource("2_jxjmn")]
-position = Vector2(384, 72)
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Planet"]
-
-[node name="Path2D" type="Path2D" parent="Planet/PathFollow2D"]
-position = Vector2(-384, -72)
+[node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_6iac4")
 
-[connection signal="body_entered" from="PlanetDetector" to="." method="_on_planet_detector_body_entered"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-320, -8)
+rotation = 1.57936
+script = ExtResource("2_u6tia")
+
+[connection signal="body_entered" from="PlanetDetector" to="Path2D/PathFollow2D" method="_on_planet_detector_body_entered"]

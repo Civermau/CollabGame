@@ -3,8 +3,8 @@ using System;
 
 public partial class sun : CharacterBody2D
 {
-    [Export]
-    public float Speed = 300.0f;
+	[Export]
+	public float Speed = 300.0f;
 	[Export]
 	private Vector2 sizeMultiplier = new Vector2(1, 1);
 	[Export]
@@ -12,13 +12,13 @@ public partial class sun : CharacterBody2D
 	[Export]
 	private int maxPlanetCount = 0;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		GD.Print(Name + " succesfully loaded!");
 
-    }
+	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -31,8 +31,8 @@ public partial class sun : CharacterBody2D
 		else
 		{
 			velocity.X = Mathf.Lerp(Velocity.X, 0, 0.05f);
-            velocity.Y = Mathf.Lerp(Velocity.Y, 0, 0.05f);
-        }
+			velocity.Y = Mathf.Lerp(Velocity.Y, 0, 0.05f);
+		}
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -44,14 +44,5 @@ public partial class sun : CharacterBody2D
 		this.Scale = sizeBase * sizeMultiplier;
 	}
 
-	public void _on_planet_detector_body_entered(Node2D body)
-	{
-		if(body.GetType() == typeof(planet))
-		{
-			planet planet = (planet)body;
-			planet.destroyPlanet();
-
-			GD.Print(planet.Name + " ha entrado al area de deteccion");
-		}
-	}
+	
 }
