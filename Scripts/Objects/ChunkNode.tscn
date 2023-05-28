@@ -32,4 +32,3 @@ position = Vector2(1.49997, 1.5)
 texture = SubResource("NoiseTexture2D_6lduj")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
