@@ -2,6 +2,7 @@
 .godot/
 addons/
 
+
 <<<<<<< HEAD
 =======
 
@@ -32,7 +33,7 @@ mono_crash.*.json
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
+*.sln.docstates	
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
