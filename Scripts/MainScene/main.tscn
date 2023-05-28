@@ -34,6 +34,7 @@ noise = SubResource("FastNoiseLite_buu1n")
 position = Vector2(574, 318)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
 position = Vector2(578, 321)
@@ -51,13 +52,23 @@ texture = SubResource("NoiseTexture2D_sm464")
 position = Vector2(14, -14)
 
 [node name="Planet" parent="." instance=ExtResource("2_6ll6m")]
-position = Vector2(-511, 64)
+position = Vector2(-178, 155)
 
 [node name="Planet2" parent="." instance=ExtResource("2_6ll6m")]
-position = Vector2(-283, 172)
+position = Vector2(-195, 340)
 
 [node name="Planet3" parent="." instance=ExtResource("2_6ll6m")]
-position = Vector2(-494, -148)
+position = Vector2(-22, 299)
+
+[node name="Planet4" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(194, 311)
+
+[node name="Planet5" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-83, 243)
+
+[node name="Planet6" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(171, 228)
 
 [node name="ChunkNode" parent="." instance=ExtResource("3_uld8w")]
+visible = false
 position = Vector2(-574, -327)

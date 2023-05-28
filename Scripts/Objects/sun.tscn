@@ -1,9 +1,13 @@
-[gd_scene load_steps=409 format=3 uid="uid://cx31wnxe4e4jr"]
+[gd_scene load_steps=413 format=3 uid="uid://cx31wnxe4e4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/sun.cs" id="1_cfw31"]
 [ext_resource type="Script" path="res://Scripts/Objects/PathFollow1.cs" id="2_u6tia"]
 [ext_resource type="Texture2D" uid="uid://b38s0tt5xlky0" path="res://Resources/Sun.png" id="2_wd87i"]
 [ext_resource type="PackedScene" uid="uid://difdgwvvy4wkb" path="res://Scripts/UIs/planet_ui.tscn" id="3_eq273"]
+[ext_resource type="Texture2D" uid="uid://bk2eerkxe6cdo" path="res://Resources/Maps/IlluminationMap.png" id="5_feu6q"]
+[ext_resource type="Texture2D" uid="uid://du8pwdfjmypat" path="res://Resources/Maps/IlluminationMap2.png" id="6_xe4bc"]
+[ext_resource type="Texture2D" uid="uid://b3vahcjinwthn" path="res://Resources/Maps/IlluminationMap3.png" id="7_j365r"]
+[ext_resource type="Texture2D" uid="uid://bvssm1yw0yeks" path="res://Resources/Maps/IlluminationMap4.png" id="8_x2qln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tqkr"]
 atlas = ExtResource("2_wd87i")
@@ -2828,6 +2832,7 @@ _data = {
 point_count = 5
 
 [node name="Sun" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_cfw31")
 metadata/_edit_horizontal_guides_ = [-38.0]
 
@@ -2841,14 +2846,16 @@ frame_progress = 0.21958
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e5xfv")
+debug_color = Color(0, 0.6, 0.701961, 0.0666667)
 
 [node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(0.5, 0.5)
 
 [node name="PlanetDetector" type="Area2D" parent="."]
 
 [node name="PlanetCollider" type="CollisionShape2D" parent="PlanetDetector"]
 shape = SubResource("CircleShape2D_s67a5")
+debug_color = Color(0.85098, 0.372549, 0, 0.0705882)
 
 [node name="InternalPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_6iac4")
@@ -2864,5 +2871,25 @@ offset_top = -648.0
 offset_right = -1152.0
 offset_bottom = -648.0
 scale = Vector2(2, 2)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+energy = 0.5
+texture = ExtResource("5_feu6q")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+texture_filter = 1
+energy = 0.5
+texture = ExtResource("6_xe4bc")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+texture_filter = 1
+energy = 0.5
+texture = ExtResource("7_j365r")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+texture_filter = 1
+energy = 0.5
+texture = ExtResource("8_x2qln")
 
 [connection signal="body_entered" from="PlanetDetector" to="InternalPath/PathFollow" method="_on_planet_detector_body_entered"]
