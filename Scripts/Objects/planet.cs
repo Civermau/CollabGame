@@ -13,6 +13,7 @@ public partial class planet : CharacterBody2D
 	public Vector2 moveTo;
 	public override void _Ready()
 	{
+		GD.Randomize();
 		if (GetParentOrNull<PathFollow2D>() != null ) { 
 			onSun = true;
 			Position = new Vector2(0, 0);
@@ -57,6 +58,10 @@ public partial class planet : CharacterBody2D
 
 	public void DestroyPlanet()
 	{
+		int random = GD.RandRange(1, 5);
+		AudioStreamPlayer Explosion = GetNode<AudioStreamPlayer>("SFX/Explosion" + random);
+		Explosion.Play();
+
 		this.QueueFree();
 	}
 	public void AddPlanet(Node node)
@@ -68,5 +73,10 @@ public partial class planet : CharacterBody2D
 	public void UpdatePosition(Vector2 NewPosition)
 	{
 		moveTo = NewPosition;
+	}
+
+	private void _on_planet_detector_body_entered(Node2D body)
+	{
+		GD.Print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	}
 }

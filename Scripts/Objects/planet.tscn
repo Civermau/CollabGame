@@ -1,4 +1,4 @@
-[gd_scene load_steps=20059 format=3 uid="uid://cxf7hsx6bn1hy"]
+[gd_scene load_steps=20064 format=3 uid="uid://cxf7hsx6bn1hy"]
 
 [ext_resource type="Shader" path="res://Resources/Shaders/planet-test.gdshader" id="1_ie36s"]
 [ext_resource type="Script" path="res://Scripts/Objects/planet.cs" id="1_y14s7"]
@@ -52,6 +52,11 @@
 [ext_resource type="Texture2D" uid="uid://bdgqb3345lvnm" path="res://Resources/Planets/Planet48.png" id="49_c5fx5"]
 [ext_resource type="Texture2D" uid="uid://mqxl5qi7xsl0" path="res://Resources/Planets/Planet49.png" id="50_xoh42"]
 [ext_resource type="Texture2D" uid="uid://bqierpxnjigdi" path="res://Resources/Planets/Planet50.png" id="51_bpnek"]
+[ext_resource type="AudioStream" uid="uid://u8e48x7ct5ar" path="res://Resources/SFX/Destroy/explosion1.wav" id="53_eaume"]
+[ext_resource type="AudioStream" uid="uid://b7cmcjfo38gwr" path="res://Resources/SFX/Destroy/explosion2.wav" id="54_x7u22"]
+[ext_resource type="AudioStream" uid="uid://dkx3nw5qe2en6" path="res://Resources/SFX/Destroy/explosion3.wav" id="55_otfjp"]
+[ext_resource type="AudioStream" uid="uid://cldx0f3fkbslw" path="res://Resources/SFX/Destroy/explosion4.wav" id="56_id4iq"]
+[ext_resource type="AudioStream" uid="uid://cv5m32tjqun3v" path="res://Resources/SFX/Destroy/explosion5.wav" id="57_sphpw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_34dqd"]
 shader = ExtResource("1_ie36s")
@@ -140335,7 +140340,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bp0f"]
-radius = 31.5753
+radius = 34.0
 
 [node name="Planet" type="CharacterBody2D"]
 script = ExtResource("1_y14s7")
@@ -140364,4 +140369,21 @@ libraries = {
 [node name="Collision" type="CollisionShape2D" parent="PlanetDetector"]
 shape = SubResource("CircleShape2D_1bp0f")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="Node" parent="."]
+
+[node name="Explosion1" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("53_eaume")
+
+[node name="Explosion2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("54_x7u22")
+
+[node name="Explosion3" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("55_otfjp")
+
+[node name="Explosion4" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("56_id4iq")
+
+[node name="Explosion5" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("57_sphpw")
+
+[connection signal="body_entered" from="PlanetDetector" to="." method="_on_planet_detector_body_entered"]
