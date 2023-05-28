@@ -43,6 +43,6 @@ public partial class sun : CharacterBody2D
 	{
 		this.Scale = sizeBase * sizeMultiplier;
 	}
-	//hello
+	//hell0
 	
 }

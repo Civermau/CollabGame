@@ -25,6 +25,11 @@ public partial class planet : CharacterBody2D
 	}
 	public override void _PhysicsProcess(double delta)
 	{
+		if(ID == -2)
+		{
+            GetParent().RemoveChild(this);
+            QueueFree();
+		}
 		if(onSunEntered == false && onSun == true)
 		{
 			moveTo = Position;
@@ -49,7 +54,16 @@ public partial class planet : CharacterBody2D
 		}
 		else
 		{
-			if(!(Position.X - moveTo.X < 1 && Position.Y - moveTo.Y < 1 && Position.X - moveTo.X > -1 && Position.Y - moveTo.Y > -1))
+			int saveID = ID - 1;
+			if(GetParent().GetNodeOrNull<planet>("Planet-" + saveID.ToString()) == null && ID != 0)
+			{
+                PathFollow1 node = GetParent<PathFollow1>();
+				Name = "Planet-" + (saveID).ToString();
+				ID--;
+            }
+			
+            moveTo = (new Vector2(GetParent<PathFollow1>().initPosition.Y + (float)(Math.Cos((ID * 6.283) / (float)GetParent<PathFollow1>().PlanetQuantity) * 300), GetParent<PathFollow1>().initPosition.X + (float)(Math.Sin((ID * 6.282) / (float)GetParent<PathFollow1>().PlanetQuantity) * 300)));
+            if (!(Position.X - moveTo.X < 1 && Position.Y - moveTo.Y < 1 && Position.X - moveTo.X > -1 && Position.Y - moveTo.Y > -1))
 			{
 				Position = new Vector2(Position.X + ((moveTo.X - Position.X) * (float)delta), Position.Y + ((moveTo.Y - Position.Y) * (float)delta));
 			}
@@ -59,14 +73,14 @@ public partial class planet : CharacterBody2D
 
 	public void DestroyPlanet()
 	{ 
-
-		this.QueueFree();
+		ID = -2;
 	}
+
 	public void AddPlanet(Node node)
 	{
 		onSun = true;
 		GetParent().RemoveChild(this);
-		node.CallDeferred("add_child", this, true);
+		node.CallDeferred("add_child", this);
 	}
 	public void UpdatePosition(Vector2 NewPosition)
 	{
