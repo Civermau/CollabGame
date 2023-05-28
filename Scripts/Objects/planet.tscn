@@ -1,4 +1,4 @@
-[gd_scene load_steps=20058 format=3 uid="uid://cxf7hsx6bn1hy"]
+[gd_scene load_steps=20059 format=3 uid="uid://cxf7hsx6bn1hy"]
 
 [ext_resource type="Shader" path="res://Resources/Shaders/planet-test.gdshader" id="1_ie36s"]
 [ext_resource type="Script" path="res://Scripts/Objects/planet.cs" id="1_y14s7"]
@@ -140334,6 +140334,9 @@ _data = {
 "Pixel Dissolve": SubResource("Animation_wrubx")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bp0f"]
+radius = 31.5753
+
 [node name="Planet" type="CharacterBody2D"]
 script = ExtResource("1_y14s7")
 
@@ -140355,3 +140358,10 @@ debug_color = Color(0, 0.6, 0.701961, 0.0509804)
 libraries = {
 "": SubResource("AnimationLibrary_51068")
 }
+
+[node name="PlanetDetector" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="PlanetDetector"]
+shape = SubResource("CircleShape2D_1bp0f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
