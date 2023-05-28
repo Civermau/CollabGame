@@ -17,6 +17,7 @@ color_ramp = SubResource("Gradient_hicms")
 noise = SubResource("FastNoiseLite_625wq")
 
 [node name="ChunkNode" type="Node2D"]
+z_index = -1
 script = ExtResource("1_bomtw")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -26,7 +27,6 @@ shape = SubResource("RectangleShape2D_ru820")
 debug_color = Color(0, 0.741176, 0.858824, 0.0313726)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-visible = false
 modulate = Color(1, 1, 1, 0.188235)
 position = Vector2(1.49997, 1.5)
 texture = SubResource("NoiseTexture2D_6lduj")
