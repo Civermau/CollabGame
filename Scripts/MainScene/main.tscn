@@ -50,14 +50,74 @@ texture = SubResource("NoiseTexture2D_sm464")
 [node name="Sun" parent="." instance=ExtResource("2_pbyu2")]
 position = Vector2(14, -14)
 
-[node name="Planet" parent="." instance=ExtResource("2_6ll6m")]
+[node name="Planet01" parent="." instance=ExtResource("2_6ll6m")]
 position = Vector2(-511, 64)
 
-[node name="Planet2" parent="." instance=ExtResource("2_6ll6m")]
+[node name="Planet06" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet07" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet08" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet09" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet10" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet11" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet12" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet13" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet14" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet15" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet16" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet17" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet18" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet19" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet20" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet21" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet22" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet23" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-511, 64)
+
+[node name="Planet02" parent="." instance=ExtResource("2_6ll6m")]
 position = Vector2(-283, 172)
 
-[node name="Planet3" parent="." instance=ExtResource("2_6ll6m")]
+[node name="Planet03" parent="." instance=ExtResource("2_6ll6m")]
 position = Vector2(-494, -148)
 
 [node name="ChunkNode" parent="." instance=ExtResource("3_uld8w")]
 position = Vector2(-574, -327)
+
+[node name="Planet04" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-820, -94)
+
+[node name="Planet05" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-464, 306)

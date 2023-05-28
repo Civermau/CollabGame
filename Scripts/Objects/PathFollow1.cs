@@ -32,19 +32,35 @@ public partial class PathFollow1 : PathFollow2D
 	}
 	public void CreatePlanet(planet Planet)
 	{
-		Node2D node;
+		planet node;
 		PlanetQuantity++;
-		Planet.onSun = true;
-		Planet.Name = "Planet" + PlanetQuantity.ToString();
-		Planet.Position = new Vector2(initPosition.Y + (float)(Math.Cos(0) * 300), initPosition.X + (float)(Math.Sin(0) * 300));
-		for (int i = 1; i < PlanetQuantity; i++)
+		Planet.Name = "Planet-" + PlanetQuantity.ToString();
+		if (PlanetQuantity == 2)
 		{
-			GD.Print("Recalculating Planet" + i.ToString());
-			node = GetNode<Node2D>("Planet" + i.ToString());
-			node.Position = new Vector2(initPosition.Y + (float)(Math.Cos((i * 6.283)/ (float)PlanetQuantity) * 300), initPosition.X + (float)(Math.Sin((i * 6.282) / (float)PlanetQuantity) * 300));
-			GD.Print(node.Name + " new position : " + node.Position.ToString() + " i = " + i.ToString() + " Planet Quantity = " + PlanetQuantity.ToString());
-			GD.Print("acos(i/PlanetQuantity) = " + Math.Cos(i / (float)PlanetQuantity).ToString());
+            Planet.Position = new Vector2(initPosition.Y + (float)(Math.Cos((1 * 6.283) / (float)PlanetQuantity) * 300), initPosition.X + (float)(Math.Sin((1 * 6.282) / (float)PlanetQuantity) * 300));
+            GD.Print("Recalculating Planet-1");
+            node = GetNode<planet>("Planet-1");
+            node.moveTo = (new Vector2(initPosition.Y + (float)(Math.Cos(0) * 300), initPosition.X + (float)(Math.Sin(0) * 300)));
+            //node.Position = (new Vector2(initPosition.Y + (float)(Math.Cos((i * 6.283) / (float)PlanetQuantity) * 300), initPosition.X + (float)(Math.Sin((i * 6.282) / (float)PlanetQuantity) * 300)));
+            GD.Print(node.Name + " new position : " + node.Position.ToString() + " i = " + 1.ToString() + " Planet Quantity = " + PlanetQuantity.ToString());
+            GD.Print("acos(i/PlanetQuantity) = " + Math.Cos(1 / (float)PlanetQuantity).ToString());
+
+        }
+		else
+		{
+			Planet.Position = new Vector2(initPosition.Y + (float)(Math.Cos(0) * 300), initPosition.X + (float)(Math.Sin(0) * 300));
+
+			for (int i = 1; i < PlanetQuantity; i++)
+			{
+				GD.Print("Recalculating Planet-" + i.ToString());
+				node = GetNode<planet>("Planet-" + i.ToString());
+				node.moveTo = (new Vector2(initPosition.Y + (float)(Math.Cos((i * 6.283) / (float)PlanetQuantity) * 300), initPosition.X + (float)(Math.Sin((i * 6.282) / (float)PlanetQuantity) * 300)));
+				//node.Position = (new Vector2(initPosition.Y + (float)(Math.Cos((i * 6.283) / (float)PlanetQuantity) * 300), initPosition.X + (float)(Math.Sin((i * 6.282) / (float)PlanetQuantity) * 300)));
+				GD.Print(node.Name + " new position : " + node.Position.ToString() + " i = " + i.ToString() + " Planet Quantity = " + PlanetQuantity.ToString());
+				GD.Print("acos(i/PlanetQuantity) = " + Math.Cos(i / (float)PlanetQuantity).ToString());
+			}
 		}
-		Planet.AddPlanet(this);
+
+        Planet.AddPlanet(this);
 	}
 }
