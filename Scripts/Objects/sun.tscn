@@ -2872,22 +2872,22 @@ offset_right = -1152.0
 offset_bottom = -648.0
 scale = Vector2(2, 2)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="OutherestLight" type="PointLight2D" parent="."]
 texture_filter = 1
 energy = 0.5
 texture = ExtResource("5_feu6q")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
+[node name="OutherLight" type="PointLight2D" parent="."]
 texture_filter = 1
 energy = 0.5
 texture = ExtResource("6_xe4bc")
 
-[node name="PointLight2D3" type="PointLight2D" parent="."]
+[node name="InnerLight" type="PointLight2D" parent="."]
 texture_filter = 1
 energy = 0.5
 texture = ExtResource("7_j365r")
 
-[node name="PointLight2D4" type="PointLight2D" parent="."]
+[node name="InnestLight" type="PointLight2D" parent="."]
 texture_filter = 1
 energy = 0.5
 texture = ExtResource("8_x2qln")

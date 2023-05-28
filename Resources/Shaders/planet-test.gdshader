@@ -4,7 +4,7 @@ uniform float time:hint_range(0.0, 1.57, 0.001) = 1.0;
 
 float rand(vec2 co){
     return fract(sin(dot(co.xy ,vec2(12.9898,96.233))) * 43758.5453);
-}
+} 
 
 void fragment()
 {

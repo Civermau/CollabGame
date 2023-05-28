@@ -55,7 +55,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_34dqd"]
 shader = ExtResource("1_ie36s")
-shader_parameter/time = 0.0
+shader_parameter/time = 1.57
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibw4m"]
 atlas = ExtResource("2_anh6e")
