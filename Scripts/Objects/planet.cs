@@ -11,6 +11,7 @@ public partial class planet : CharacterBody2D
 	[Export]
 	public Vector2 direction = new Vector2((float)GD.Randfn(0, 1), (float)GD.Randfn(0, 1));
 	public Vector2 moveTo;
+	public int ID;
 	public override void _Ready()
 	{
 		GD.Randomize();
@@ -20,6 +21,7 @@ public partial class planet : CharacterBody2D
 			GD.Print("onSun set true");
 		}
 		moveTo = Position;
+		ID = -1;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -49,7 +51,6 @@ public partial class planet : CharacterBody2D
 		{
 			if(!(Position.X - moveTo.X < 1 && Position.Y - moveTo.Y < 1 && Position.X - moveTo.X > -1 && Position.Y - moveTo.Y > -1))
 			{
-				GD.Print(Position.X.ToString());
 				Position = new Vector2(Position.X + ((moveTo.X - Position.X) * (float)delta), Position.Y + ((moveTo.Y - Position.Y) * (float)delta));
 			}
 		}
@@ -57,10 +58,7 @@ public partial class planet : CharacterBody2D
 	}
 
 	public void DestroyPlanet()
-	{
-		int random = GD.RandRange(1, 5);
-		AudioStreamPlayer Explosion = GetNode<AudioStreamPlayer>("SFX/Explosion" + random);
-		Explosion.Play();
+	{ 
 
 		this.QueueFree();
 	}
@@ -68,7 +66,7 @@ public partial class planet : CharacterBody2D
 	{
 		onSun = true;
 		GetParent().RemoveChild(this);
-		node.CallDeferred("add_child", this);
+		node.CallDeferred("add_child", this, true);
 	}
 	public void UpdatePosition(Vector2 NewPosition)
 	{
@@ -77,6 +75,21 @@ public partial class planet : CharacterBody2D
 
 	private void _on_planet_detector_body_entered(Node2D body)
 	{
-		GD.Print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		if (body is planet planet) {
+			planet Planet = (planet)body;
+			if (Planet.ID != ID && !Planet.onSun)
+			{
+				GD.Print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				if (GetParentOrNull<PathFollow1>() != null)
+				{
+					GetParentOrNull<PathFollow1>().DestroyPlanet(this, Planet);
+
+				}
+			}
+		}
+	}
+	public void NewName(string newName)
+	{
+		Name = newName;
 	}
 }

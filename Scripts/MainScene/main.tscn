@@ -17,6 +17,54 @@ position = Vector2(14, -14)
 [node name="Planet01" parent="." instance=ExtResource("2_6ll6m")]
 position = Vector2(-399, -49)
 
+[node name="Planet04" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-716, -109)
+
+[node name="Planet07" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-716, -109)
+
+[node name="Planet08" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet10" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet11" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet12" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet13" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet14" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet15" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet16" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet17" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet18" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-541, -231)
+
+[node name="Planet19" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-568, -63)
+
+[node name="Planet09" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-686, 28)
+
+[node name="Planet05" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-797, 48)
+
+[node name="Planet06" parent="." instance=ExtResource("2_6ll6m")]
+position = Vector2(-964, -55)
+
 [node name="Planet02" parent="." instance=ExtResource("2_6ll6m")]
 position = Vector2(-437, 116)
 
