@@ -12,7 +12,7 @@ position = Vector2(574, 318)
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sun" parent="." instance=ExtResource("2_pbyu2")]
-position = Vector2(14, -14)
+position = Vector2(57, -86)
 
 [node name="Planet01" parent="." instance=ExtResource("2_6ll6m")]
 position = Vector2(-399, -49)
