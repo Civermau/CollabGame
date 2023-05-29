@@ -18,7 +18,7 @@ public partial class meteor : CharacterBody2D
 
 
         int rand = GD.RandRange(-10, 10);
-		string animID = (Math.Abs(rand) < 10 ? "0" + Mathf.Abs(rand).ToString() : Mathf.Abs(rand).ToString());
+		string animID = (Math.Abs(rand == 0 ? 5 : rand) < 10 ? "0" + Mathf.Abs(rand).ToString() : Mathf.Abs(rand).ToString());
 		meteorSprite.Animation = ("Meteor" + animID);
 		meteorSprite.Play();
 		meteorSprite.SpeedScale = rand;	

@@ -50,7 +50,10 @@ public partial class planet : CharacterBody2D
 			}
 
 			Velocity = velocity;
-			MoveAndSlide();
+			
+			if(Velocity != new Vector2(0, 0)){  
+				MoveAndSlide();
+			}
 		}
 		else
 		{
