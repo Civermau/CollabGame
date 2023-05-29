@@ -16,9 +16,16 @@ public partial class meteor : CharacterBody2D
 		GD.Randomize();
 		AnimatedSprite2D meteorSprite = GetNode<AnimatedSprite2D>("Sprites");
 
-
+		string animID;
         int rand = GD.RandRange(-10, 10);
-		string animID = (Math.Abs(rand == 0 ? 5 : rand) < 10 ? "0" + Mathf.Abs(rand).ToString() : Mathf.Abs(rand).ToString());
+		if (rand == 0)
+		{
+			animID = "05";
+		}
+		else
+		{
+			animID = (Math.Abs(rand) < 10 ? "0" + Mathf.Abs(rand).ToString() : Mathf.Abs(rand).ToString());
+		}
 		meteorSprite.Animation = ("Meteor" + animID);
 		meteorSprite.Play();
 		meteorSprite.SpeedScale = rand;	

@@ -21,17 +21,27 @@ public partial class ChunkNode : Node
 		int chances = GD.RandRange(0, 19);
 		if (chances <= 2)
 		{
-			Planet.Position = new Vector2(x * 1536, y * 1536);
+            Vector2 position = new Vector2(GD.RandRange(-750, 750), GD.RandRange(-750, 750));
+            Planet.Position = new Vector2(x * 1536, y * 1536) + position;
             AddChild(Planet);
 		}
 		if (chances <= 6)
 		{
-			Meteor.Position = new Vector2(x * 1536, y * 1536);
+            Vector2 position = new Vector2(GD.RandRange(-750, 750), GD.RandRange(-750, 750));
+            Meteor.Position = new Vector2(x * 1536, y * 1536) + position;
             AddChild(Meteor);
 		}
     }
 
-	private void _on_area_2d_body_entered(Node2D body)
+    public override void _Process(double delta)
+    {
+        if(Name != ("ChunkNode" + x.ToString() + "," + y.ToString()))
+		{
+			QueueFree();
+		}
+    }
+
+    private void _on_area_2d_body_entered(Node2D body)
 	{
         if (body is sun sun){
 			sun Sun = (sun)body;

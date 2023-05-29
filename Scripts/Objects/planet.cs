@@ -23,7 +23,7 @@ public partial class planet : CharacterBody2D
 		moveTo = Position;
 		ID = -1;
 	}
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
 	{
 		if(ID == -2)
 		{
@@ -81,7 +81,6 @@ public partial class planet : CharacterBody2D
 
 	public void AddPlanet(Node node)
 	{
-		onSun = true;
 		GetParent().RemoveChild(this);
 		node.CallDeferred("add_child", this);
 	}
@@ -93,7 +92,7 @@ public partial class planet : CharacterBody2D
 	private void _on_planet_detector_body_entered(Node2D body)
 	{
 		if (body is planet planet) {
-			planet Planet = (planet)body;
+            planet Planet = (planet)body;
 			if (Planet.ID != ID && !Planet.onSun)
 			{
 				GD.Print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");

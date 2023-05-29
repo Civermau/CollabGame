@@ -1,4 +1,4 @@
-[gd_scene load_steps=413 format=3 uid="uid://cx31wnxe4e4jr"]
+[gd_scene load_steps=414 format=3 uid="uid://cx31wnxe4e4jr"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/sun.cs" id="1_cfw31"]
 [ext_resource type="Script" path="res://Scripts/Objects/PathFollow1.cs" id="2_u6tia"]
@@ -2831,6 +2831,9 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfr3k"]
+size = Vector2(6144, 6144)
+
 [node name="Sun" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_cfw31")
@@ -2892,4 +2895,10 @@ texture_filter = 1
 energy = 0.5
 texture = ExtResource("8_x2qln")
 
+[node name="PlanetOutDetector" type="Area2D" parent="."]
+
+[node name="PlanetCollider" type="CollisionShape2D" parent="PlanetOutDetector"]
+shape = SubResource("RectangleShape2D_qfr3k")
+
 [connection signal="body_entered" from="PlanetDetector" to="InternalPath/PathFollow" method="_on_planet_detector_body_entered"]
+[connection signal="body_exited" from="PlanetOutDetector" to="InternalPath/PathFollow" method="_on_planet_out_detector_body_exited"]

@@ -21,7 +21,7 @@ public partial class PathFollow1 : PathFollow2D
 	{
 		if (body is planet planet)
 		{
-			planet Planet = (planet)body;
+            planet Planet = (planet)body;
 			if (!Planet.onSun)
 			{
 				CreatePlanet(Planet);
@@ -37,7 +37,7 @@ public partial class PathFollow1 : PathFollow2D
 		Planet.Name = "Planet-" + PlanetQuantity.ToString();
         PlanetQuantity++;
         Planet.Position = new Vector2(initPosition.Y + (float)(Math.Cos((Planet.ID * 6.283) / (float)PlanetQuantity) * 300), initPosition.X + (float)(Math.Sin((Planet.ID * 6.282) / (float)PlanetQuantity) * 300));
-
+		Planet.onSun = true;
         Planet.AddPlanet(this);
 	}
     public void DestroyPlanet(planet Planet1, planet Planet2)
@@ -46,4 +46,20 @@ public partial class PathFollow1 : PathFollow2D
 		Planet1.DestroyPlanet();
         Planet2.DestroyPlanet();
     }
+	public void _on_planet_out_detector_body_exited(Node2D body)
+	{
+		if(body is planet planet)
+		{
+			planet Planet = (planet)body;
+			if (!Planet.onSun)
+			{
+				Planet.DestroyPlanet();
+			}
+		}
+		if(body is meteor meteor)
+		{
+			meteor Meteor = (meteor)body;
+			Meteor.QueueFree();
+		}
+	}
 }
